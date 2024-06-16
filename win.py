@@ -2,8 +2,8 @@ import pandas as pd
 excel_path = "Product.xlsx"
 df = pd.read_excel(excel_path) #don't forget to pip install openpyxl
 
-# product = eval(input("product : "))
-# amount = eval(input("amount : "))
+product = eval(input("product : "))
+amount = eval(input("amount : "))
 
 
 def get_price(product):
@@ -29,4 +29,4 @@ def cal(product, amount):
     except :
             print("error fix it yourself i'm gonna go eat breakfast")
 
-cal(None,None) #ใส่ชื่อของกับจำนวนนะจ้ะ
+cal(product,amount) #ใส่ชื่อของกับจำนวนนะจ้ะ

@@ -1,9 +1,9 @@
 import pandas as pd
-excel_path = "Product.xlsx"
+excel_path = "win//Product.xlsx"
 df = pd.read_excel(excel_path) #don't forget to pip install openpyxl
 
-product = eval(input("product : "))
-amount = eval(input("amount : "))
+product = str(input("product : "))
+amount = int(input("amount : "))
 
 
 def get_price(product):
@@ -23,6 +23,8 @@ def decrese_stock(product,amount):
     amount_column = df.columns[label_column_index + 2]
     row_index = df.index[df['Name'] == product].tolist()[0]
     df.at[row_index, amount_column] -= amount
+    amount_value = df.loc[df['Name'] == product, amount_column].values[0]
+    return amount_value
 
 def cal(product, amount):
     try :
@@ -33,7 +35,8 @@ def cal(product, amount):
         else :
             print(f"{amount} {product} for {amount*price} bath")
             left = stock - amount
-            decrese_stock(product,left)
+            left = decrese_stock(product,left)
+            print(f"{left} {product} left")
             
     except :
             print("error fix it yourself i'm gonna go eat breakfast")

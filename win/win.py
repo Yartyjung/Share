@@ -1,10 +1,4 @@
 import pandas as pd
-excel_path = "win//Product.xlsx"
-df = pd.read_excel(excel_path) #don't forget to pip install openpyxl
-
-product = str(input("product : "))
-amount = int(input("amount : "))
-
 
 def get_price(product):
     label_column_index = df.columns.get_loc('Name')
@@ -41,4 +35,12 @@ def cal(product, amount):
     except :
             print("error fix it yourself i'm gonna go eat breakfast")
 
-cal(product,amount) #ใส่ชื่อของกับจำนวนนะจ้ะ
+excel_path = "win//Product.xlsx"
+df = pd.read_excel(excel_path) #don't forget to pip install openpyxl
+all_product = [i for i in df["Name"]]
+product = str(input("product : "))
+if product not in all_product:
+    print("the product is not in the list of products")
+else:
+    amount = int(input("amount : "))
+    cal(product,amount) #ใส่ชื่อของกับจำนวนนะจ้ะ
